@@ -1,0 +1,22 @@
+.footer{
+background-color: brown;
+height: 50px;
+text-align: center;
+}
+.footer__text{
+color: white;
+padding-right: 10%;
+position: relative;
+top:10px
+}
+.footer__link{
+    position: relative;
+    top:10px;
+    text-decoration: none;
+    color: white;
+    padding-left: 10%;
+}
+.footer__line{
+    height: 10px;
+    background-color: #c12131;  
+}
