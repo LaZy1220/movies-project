@@ -60,3 +60,11 @@ code {
       height: 10px;
       background-color: #c12131;  
   }
+  .bnt-search{
+    position: absolute;
+    top:0;
+    right: 0.5rem;
+  }
+  label:not(:last-child){
+    margin-right: 5rem;
+  }
