@@ -5,7 +5,7 @@ export function Movie(props) {
             <div className="card-image waves-effect waves-block waves-light">
                 {
                     Poster === 'N/A'
-                        ? <img className="activator" src={`https://via.placeholder.com/468x150?text=${Title}`} alt="is not found" />
+                        ? <img className="activator" src={`https://via.placeholder.com/468x665?text=${Title}`} alt="is not found" />
                         : <img className="activator" src={Poster} alt="is not found" />
                 }
             </div>
