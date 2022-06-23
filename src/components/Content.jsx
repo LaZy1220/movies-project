@@ -1,37 +1,41 @@
-import { Component } from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Movies } from './Movies'
 import { Preloader } from './Preloader'
 import { Search } from './Search'
+
 const API_KEY = process.env.REACT_APP_API_KEY;
-export class Content extends Component {
-    state = {
-        movies: [],
-        isLoading:true,
-    }
-    findMovies = (str,type='all') => {
-        this.setState({isLoading:true})
+
+export function Content(){
+    const [movies,setMovies]= useState([])
+    const [isLoading,setIsLoading] = useState('true')
+
+   const findMovies = (str,type='all') => {
+        setIsLoading(true)
         fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&S=${str}${type === 'all'?'': `&type=${type}`}`)
             .then(response => response.json())
-            .then(data => this.setState({ movies: data.Search, isLoading:false }))
-    }
-    componentDidMount() {
-        fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&S=matrix`)
-            .then(response => response.json())
-            .then(data => this.setState({ movies: data.Search,isLoading:false }))
-            .catch((err)=>{
-                console.error(err)
-                this.setState({isLoading:false})
+            .then(data=>{
+                setMovies(data.Search); 
+                setIsLoading(false)
             })
     }
-    render() {
-        const { movies,isLoading } = this.state
+    useEffect(()=>{ 
+        fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&S=avengers`)
+            .then(response => response.json())
+            .then(data =>{
+                setMovies(data.Search);
+                setIsLoading(false)
+            })
+            .catch((err)=>{
+                console.error(err)
+                setIsLoading(false)
+    })},[])
         return (
             <div className='content conteiner'>
-                <Search findMovies={this.findMovies} />
+                <Search findMovies={findMovies} />
                 {isLoading
                     ? <Preloader />
                     : (<Movies movies={movies} />)}
             </div>
         )
     }
-}

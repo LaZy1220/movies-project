@@ -68,3 +68,21 @@ code {
   label:not(:last-child){
     margin-right: 5rem;
   }
+  @media(max-width:490px){
+    .header__logo{
+      font-size:38px
+    }
+  }
+  @media (max-width: 430px) {
+    label:not(:last-child){
+      margin-right: 4rem;
+    }
+  }
+  @media(max-width:392px){
+    .header__logo{
+      font-size:31px
+    }
+    label:not(:last-child){
+      margin-right: 2.5rem;
+    }
+  }
